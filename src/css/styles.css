@@ -119,3 +119,9 @@ button:disabled {
   color: #989898;
   background: #cfcfcf;
 }
+
+.custom-iziToast {
+  background: linear-gradient(to right, #4caf50, #81c784);
+  color: red; 
+  border-radius: 50px;
+}

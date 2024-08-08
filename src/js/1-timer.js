@@ -1,3 +1,4 @@
+
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
@@ -23,6 +24,8 @@ const options = {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
+        position: 'topRight'
+        
       });
     } else {
       btnStart.disabled = false;
@@ -30,6 +33,8 @@ const options = {
       iziToast.success({
         title: 'OK',
         message: 'You can press "Start"!',
+        class: 'custom-iziToast',
+        position: 'topRight'
       });
     }
   },
