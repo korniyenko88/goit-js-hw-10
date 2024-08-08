@@ -4,8 +4,8 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const btnStart = document.querySelector('button[data-start]');
-const input = document.querySelector('#datetime-picker'); // Виправлено
-const day = document.querySelector('span[data-days]'); // Виправлено
+const input = document.querySelector('#datetime-picker');
+const day = document.querySelector('span[data-days]');
 const hour = document.querySelector('span[data-hours]');
 const minute = document.querySelector('span[data-minutes]');
 const second = document.querySelector('span[data-seconds]');
@@ -50,7 +50,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-const addLeadingZero = value => value.toString().padStart(2, "0");
+const addLeadingZero = value => value.toString().padStart(2, '0');
 
 btnStart.addEventListener('click', startTimer);
 
@@ -70,21 +70,14 @@ function startTimer() {
     minute.textContent = addLeadingZero(minutes);
     second.textContent = addLeadingZero(seconds);
 
-    const isTimerFinished = [days, hours, minutes, seconds].every(value => value === 0);
+    const isTimerFinished = [days, hours, minutes, seconds].every(
+      value => value === 0
+    );
 
     if (isTimerFinished) {
       clearInterval(timer);
       input.disabled = false;
       btnStart.disabled = false;
-
-      // Якщо animatedDiv оголошено, то
-      // const animatedDiv = document.querySelector('.animated');
-      // animatedDiv.classList.remove('animated');
-
-      iziToast.success({
-        title: 'Timer finished',
-        message: 'The countdown has finished!',
-      });
     }
   }, 1000);
 }
