@@ -4,12 +4,13 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const btnStart = document.querySelector('button[data-start]');
-const input = document.querySelector('#datatime-picer');
-const day = document.querySelector('span[data-day]');
+const input = document.querySelector('#datetime-picker'); // Виправлено
+const day = document.querySelector('span[data-days]'); // Виправлено
 const hour = document.querySelector('span[data-hours]');
 const minute = document.querySelector('span[data-minutes]');
 const second = document.querySelector('span[data-seconds]');
 
+// Створення flatpickr
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -48,36 +49,42 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+
 const addLeadingZero = value => value.toString().padStart(2, "0");
 
 btnStart.addEventListener('click', startTimer);
 
 function startTimer() {
-    btnStart.disabled = true;
-    input.disabled = true;
+  btnStart.disabled = true;
+  input.disabled = true;
 
-   
+  const timer = setInterval(() => {
+    const currentDate = new Date();
+    const targetDate = new Date(input.value);
+    const timeDiff = targetDate - currentDate;
 
-    const timer = setInterval(() => {
-        const currentDate = new Date();
-        const targetDate = new Date(input.value);
-        const timeDiff = targetDate - currentDate;
+    const { days, hours, minutes, seconds } = convertMs(timeDiff);
 
-        const { days, hours, minutes, seconds } = convertMs(timeDiff);
+    day.textContent = addLeadingZero(days);
+    hour.textContent = addLeadingZero(hours);
+    minute.textContent = addLeadingZero(minutes);
+    second.textContent = addLeadingZero(seconds);
 
-        day.textContent = addLeadingZero(days);
-        hour.textContent = addLeadingZero(hours);
-        minute.textContent = addLeadingZero(minutes);
-        second.textContent = addLeadingZero(seconds);
+    const isTimerFinished = [days, hours, minutes, seconds].every(value => value === 0);
 
-        const isTimerFinished = [days, hours, minutes, seconds].every(value => value === 0);
+    if (isTimerFinished) {
+      clearInterval(timer);
+      input.disabled = false;
+      btnStart.disabled = false;
 
-        if (isTimerFinished) {
-            clearInterval(timer);
-            input.disabled = false;
-            btnStart.disabled = false;
+      // Якщо animatedDiv оголошено, то
+      // const animatedDiv = document.querySelector('.animated');
+      // animatedDiv.classList.remove('animated');
 
-            animatedDiv.classList.remove('animated');
-        }
-    }, 1000);
+      iziToast.success({
+        title: 'Timer finished',
+        message: 'The countdown has finished!',
+      });
+    }
+  }, 1000);
 }
