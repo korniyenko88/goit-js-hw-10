@@ -5,7 +5,6 @@
   |============================
 */
 @import url('./reset.css');
-@import url('./vite-promo.css');
 @import url('./header.css');
 
 :root {
@@ -22,4 +21,102 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+/* ситилі для таймеру */
+
+.control-timer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}
+.timer {
+  display: flex;
+  margin-top: 32px;
+  justify-content: center;
+}
+.field {
+  width: 61px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 24px;
+  justify-content: center;
+  align-items: center;
+}
+.value {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #2e2f42;
+  font-family: 'Montserrat', sans-serif;
+}
+input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 272px;
+  height: 40px;
+  height: 35px;
+  width: 245px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+input:hover {
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+input:active {
+  border: 1px solid #4e75ff;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #000;
+}
+input:disabled {
+  background: #fafafa;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 75px;
+  height: 40px;
+  background: #4e75ff;
+}
+button:hover {
+  background: #6c8cff;
+}
+button:disabled {
+  color: #989898;
+  background: #cfcfcf;
 }
