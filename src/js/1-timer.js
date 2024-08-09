@@ -33,7 +33,7 @@ const options = {
       iziToast.success({
         title: 'OK',
         message: 'You can press "Start"!',
-        class: 'custom-iziToast',
+        
         position: 'topRight'
       });
     }
